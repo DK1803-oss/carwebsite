@@ -20,7 +20,7 @@
             overflow-x: hidden;
         }
 
-        /* Loading Overlay */
+        /* Loading Overlay - Mobile Optimized */
         #loader {
             position: fixed;
             inset: 0;
@@ -29,26 +29,51 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), visibility 1s;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
         }
 
         #loader video {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            /* This is the key for landscape videos on portrait screens */
+            object-fit: cover; 
+            /* Centers the action for landscape videos */
+            object-position: center; 
         }
 
-        /* Background Styling */
+        /* Background Styling - Multi-device Optimization */
         .bg-custom {
-            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('https://i.ibb.co/TqTqKhXc/dssdsd.jpg');
+            background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.92)), url('https://i.ibb.co/TqTqKhXc/dssdsd.jpg');
             background-attachment: fixed;
             background-size: cover;
             background-position: center;
         }
 
+        /* Mobile specific adjustments */
+        @media (max-width: 768px) {
+            .bg-custom {
+                /* Fixed backgrounds often jitter or fail on mobile Safari/Chrome */
+                background-attachment: scroll; 
+                /* Shift landscape background to show the important part of the car */
+                background-position: 65% center; 
+            }
+            
+            h1 {
+                /* Prevents text overflow on narrow screens */
+                font-size: 3rem !important;
+                line-height: 1.1 !important;
+            }
+
+            .mobile-padding {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+
         .glass-card {
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
         }
@@ -91,6 +116,12 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Optimized Form Inputs for iOS (removes default inner shadow/rounding) */
+        input, select, button {
+            -webkit-appearance: none;
+            border-radius: 0.5rem;
+        }
     </style>
 </head>
 <body class="loading">
@@ -104,118 +135,109 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-5 md:px-6 h-16 md:h-20 flex items-center justify-between">
             <div class="flex items-center gap-2">
-                <div class="w-10 h-10 bg-rose-600 rounded flex items-center justify-center">
-                    <i class="fas fa-car-side text-white text-xl"></i>
+                <div class="w-8 h-8 md:w-10 md:h-10 bg-rose-600 rounded flex items-center justify-center">
+                    <i class="fas fa-car-side text-white text-base md:text-xl"></i>
                 </div>
-                <span class="text-xl font-extrabold tracking-tighter uppercase">The Car Concept</span>
+                <span class="text-base md:text-xl font-extrabold tracking-tighter uppercase">The Car Concept</span>
             </div>
-            <div class="hidden md:flex gap-8 text-sm font-semibold uppercase tracking-wider">
+            <div class="hidden lg:flex gap-8 text-sm font-semibold uppercase tracking-wider">
                 <a href="#home" class="hover:text-rose-500 transition">Home</a>
                 <a href="#about" class="hover:text-rose-500 transition">About</a>
                 <a href="#services" class="hover:text-rose-500 transition">Services</a>
-                <a href="#works" class="hover:text-rose-500 transition">Our Works</a>
                 <a href="#contact" class="hover:text-rose-500 transition">Contact</a>
             </div>
-            <a href="#booking" class="btn-premium px-6 py-2 rounded text-xs">Book Appointment</a>
+            <a href="#booking" class="btn-premium px-4 md:px-6 py-2 rounded text-[10px] md:text-xs">Book Now</a>
         </div>
     </nav>
 
     <main class="bg-custom">
         <!-- Hero Section -->
-        <section id="home" class="min-h-screen flex items-center pt-20 px-6">
+        <section id="home" class="min-h-screen flex items-center pt-24 pb-12 mobile-padding">
             <div class="max-w-4xl mx-auto w-full text-center">
                 <div class="space-y-6 fade-in">
-                    <span class="inline-block px-4 py-1 bg-rose-600/20 border border-rose-600/50 text-rose-500 rounded-full text-xs font-bold uppercase tracking-widest">Since 2011</span>
-                    <h1 class="text-6xl md:text-8xl font-black leading-tight">
+                    <span class="inline-block px-4 py-1 bg-rose-600/20 border border-rose-600/50 text-rose-500 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest">Est. 2011 • Guwahati</span>
+                    <h1 class="text-4xl md:text-8xl font-black leading-tight">
                         RENEW. REVIVE.<br><span class="text-rose-600">REJUVENATE.</span>
                     </h1>
-                    <p class="text-xl text-gray-300 max-w-2xl mx-auto">
-                        Best Car Customisation & Detailing in Guwahati. We specialize in high-quality accessories and professional detailing that makes your vehicle stand out.
+                    <p class="text-base md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+                        Assam's Premier Car Detailing Studio. From luxury wraps to precision coating, we bring your vision to life.
                     </p>
-                    <div class="flex flex-wrap justify-center gap-4 pt-4">
-                        <a href="#services" class="btn-premium px-10 py-5 rounded-lg flex items-center gap-3">
-                            Visit Our Studio <i class="fas fa-arrow-right"></i>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4 pt-4 px-4 sm:px-0">
+                        <a href="#services" class="btn-premium px-8 py-4 md:px-10 md:py-5 rounded-lg flex items-center justify-center gap-3">
+                            Our Studio <i class="fas fa-arrow-right"></i>
                         </a>
-                        <a href="#booking" class="px-10 py-5 rounded-lg border border-white/20 hover:bg-white/10 transition uppercase font-bold text-sm tracking-widest">
-                            Book Now
+                        <a href="#booking" class="px-8 py-4 md:px-10 md:py-5 rounded-lg border border-white/20 hover:bg-white/10 transition uppercase font-bold text-sm tracking-widest">
+                            Enquire Now
                         </a>
-                    </div>
-                    <div class="flex items-center justify-center gap-4 text-sm text-gray-400 pt-8">
-                        <div class="flex -space-x-2">
-                            <img src="https://i.pravatar.cc/40?u=1" class="w-8 h-8 rounded-full border-2 border-black" alt="user">
-                            <img src="https://i.pravatar.cc/40?u=2" class="w-8 h-8 rounded-full border-2 border-black" alt="user">
-                            <img src="https://i.pravatar.cc/40?u=3" class="w-8 h-8 rounded-full border-2 border-black" alt="user">
-                        </div>
-                        <span>4.9/5 Rating from 2.5k+ Clients in Guwahati</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Features -->
-        <section class="py-24 px-6 bg-black/40">
-            <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
-                <div class="glass-card p-8 rounded-2xl fade-in">
+        <section class="py-20 px-6 bg-black/70">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-card p-6 md:p-8 rounded-2xl fade-in">
                     <div class="w-12 h-12 bg-rose-600/20 rounded-lg flex items-center justify-center mb-6">
                         <i class="fas fa-shield-halved text-rose-500 text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Precision Customisation</h3>
+                    <h3 class="text-xl font-bold mb-3">Precision Coating</h3>
                     <p class="text-gray-400 text-sm leading-relaxed">
-                        Every installation, wrap, and detailing job is handled by trained professionals using tested products and proper tools.
+                        Industry-leading ceramic and graphene coatings applied in a dust-free environment for maximum longevity.
                     </p>
                 </div>
-                <div class="glass-card p-8 rounded-2xl fade-in">
+                <div class="glass-card p-6 md:p-8 rounded-2xl fade-in">
                     <div class="w-12 h-12 bg-rose-600/20 rounded-lg flex items-center justify-center mb-6">
                         <i class="fas fa-certificate text-rose-500 text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Genuine Fitment</h3>
+                    <h3 class="text-xl font-bold mb-3">Premium PPF</h3>
                     <p class="text-gray-400 text-sm leading-relaxed">
-                        We use original materials, branded films, and factory-grade techniques to ensure durability and perfect finish.
+                        High-gloss Paint Protection Films that heal themselves from scratches, keeping your car brand new for years.
                     </p>
                 </div>
-                <div class="glass-card p-8 rounded-2xl fade-in">
+                <div class="glass-card p-6 md:p-8 rounded-2xl fade-in">
                     <div class="w-12 h-12 bg-rose-600/20 rounded-lg flex items-center justify-center mb-6">
-                        <i class="fas fa-map-marker-alt text-rose-500 text-2xl"></i>
+                        <i class="fas fa-magic text-rose-500 text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Trusted Local Experts</h3>
+                    <h3 class="text-xl font-bold mb-3">Custom Wraps</h3>
                     <p class="text-gray-400 text-sm leading-relaxed">
-                        We understand Guwahati roads and climate. Our solutions are practical, tested, and built to last.
+                        Change the look of your vehicle completely with our range of international grade vinyl wraps and finishes.
                     </p>
                 </div>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="py-24 px-6 bg-black">
+        <section id="about" class="py-20 px-6 bg-black">
             <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-16 space-y-4 fade-in">
-                    <h2 class="text-rose-600 font-bold uppercase tracking-widest text-sm">Our Story</h2>
-                    <h3 class="text-4xl md:text-5xl font-black">THE CAR CONCEPT – GUWAHATI</h3>
+                <div class="text-center mb-12 space-y-4 fade-in">
+                    <h2 class="text-rose-600 font-bold uppercase tracking-widest text-xs">Our Heritage</h2>
+                    <h3 class="text-3xl md:text-5xl font-black uppercase">Excellence in Guwahati</h3>
                 </div>
                 
-                <div class="grid md:grid-cols-2 gap-16 items-center">
-                    <div class="grid grid-cols-2 gap-4 fade-in">
-                        <img src="https://images.unsplash.com/photo-1542282088-fe8426682b8f?q=80&w=2070&auto=format&fit=crop" class="rounded-lg h-64 w-full object-cover" alt="Detaling">
-                        <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=2070&auto=format&fit=crop" class="rounded-lg h-64 w-full object-cover mt-8" alt="Interiors">
+                <div class="grid md:grid-cols-2 gap-10 items-center">
+                    <div class="grid grid-cols-2 gap-3 fade-in order-2 md:order-1">
+                        <img src="https://images.unsplash.com/photo-1542282088-fe8426682b8f?q=80&w=2070&auto=format&fit=crop" class="rounded-lg h-40 md:h-64 w-full object-cover" alt="Detailing">
+                        <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=2070&auto=format&fit=crop" class="rounded-lg h-40 md:h-64 w-full object-cover mt-6" alt="Interiors">
                     </div>
-                    <div class="space-y-8 fade-in">
+                    <div class="space-y-6 order-1 md:order-2 fade-in">
                         <div>
-                            <h4 class="text-xl font-bold text-rose-500 mb-3 flex items-center gap-2">
-                                <i class="fas fa-star"></i> Premium Auto Care
+                            <h4 class="text-lg font-bold text-rose-500 mb-2 uppercase flex items-center gap-2">
+                                <i class="fas fa-star text-sm"></i> Luxury Experience
                             </h4>
-                            <p class="text-gray-400 leading-relaxed">
-                                From detailed interior upgrades to advanced exterior protection, we use premium materials and proven techniques to deliver long-lasting results.
+                            <p class="text-gray-400 leading-relaxed text-sm md:text-base">
+                                Located at Rehabari, we provide a premium lounge for our clients while our experts work on their machines. We use only the world's best detailing products.
                             </p>
                         </div>
                         <div>
-                            <h4 class="text-xl font-bold text-rose-500 mb-3 flex items-center gap-2">
-                                <i class="fas fa-tools"></i> Trusted Solutions
+                            <h4 class="text-lg font-bold text-rose-500 mb-2 uppercase flex items-center gap-2">
+                                <i class="fas fa-check-circle text-sm"></i> Certified Quality
                             </h4>
-                            <p class="text-gray-400 leading-relaxed">
-                                Our services cover everything from seat covers, music systems, and lighting to body wrapping and PPF. One place. Complete car solutions.
+                            <p class="text-gray-400 leading-relaxed text-sm md:text-base">
+                                Every car leaves our studio after a rigorous 20-point quality check to ensure every inch is perfected and protected.
                             </p>
                         </div>
                     </div>
@@ -224,29 +246,32 @@
         </section>
 
         <!-- Booking Form -->
-        <section id="booking" class="py-24 px-6 relative overflow-hidden">
-            <div class="max-w-7xl mx-auto relative z-10 fade-in">
-                <div class="bg-neutral-900 border border-white/10 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
-                    <div class="md:w-2/5 p-12 bg-rose-600 flex flex-col justify-center text-white">
-                        <h2 class="text-4xl font-black mb-6">Book Now!</h2>
-                        <p class="opacity-90 mb-8">Professional car detailing and protection services in Guwahati.</p>
-                        <div class="space-y-4">
-                            <div class="flex items-center gap-4"><i class="fas fa-phone-alt"></i><span>70021 73959</span></div>
-                            <div class="flex items-center gap-4"><i class="fas fa-envelope"></i><span>thecarconcept.ghy@gmail.com</span></div>
+        <section id="booking" class="py-20 px-6 relative">
+            <div class="max-w-6xl mx-auto relative z-10 fade-in">
+                <div class="bg-neutral-900 border border-white/10 rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
+                    <div class="md:w-2/5 p-8 md:p-12 bg-rose-600 flex flex-col justify-center text-white">
+                        <h2 class="text-3xl font-black mb-4">Book a Slot</h2>
+                        <p class="opacity-90 mb-8 text-sm leading-relaxed">We recommend booking in advance for Ceramic and PPF services due to high demand.</p>
+                        <div class="space-y-5 text-sm font-medium">
+                            <div class="flex items-center gap-4 bg-white/10 p-3 rounded-lg"><i class="fas fa-phone-alt"></i><span>+91 70021 73959</span></div>
+                            <div class="flex items-center gap-4 bg-white/10 p-3 rounded-lg"><i class="fas fa-map-marker-alt"></i><span>Rehabari, Guwahati</span></div>
                         </div>
                     </div>
-                    <div class="md:w-3/5 p-12">
-                        <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <input type="text" placeholder="Full Name" class="bg-white/5 border border-white/10 rounded-lg p-3 outline-none focus:border-rose-600 transition">
-                            <input type="tel" placeholder="Phone Number" class="bg-white/5 border border-white/10 rounded-lg p-3 outline-none focus:border-rose-600 transition">
-                            <input type="text" placeholder="Car Detail" class="bg-white/5 border border-white/10 rounded-lg p-3 outline-none focus:border-rose-600 transition">
-                            <select class="bg-neutral-800 border border-white/10 rounded-lg p-3 outline-none focus:border-rose-600 transition text-gray-400">
-                                <option>Service Preferred</option>
-                                <option>Ceramic Coating</option>
-                                <option>PPF</option>
-                                <option>Detailing</option>
+                    <div class="md:w-3/5 p-8 md:p-12">
+                        <form class="grid grid-cols-1 gap-4 md:gap-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <input type="text" placeholder="Your Name" class="bg-white/5 border border-white/10 rounded-lg p-3 outline-none focus:border-rose-600 transition text-sm">
+                                <input type="tel" placeholder="Phone Number" class="bg-white/5 border border-white/10 rounded-lg p-3 outline-none focus:border-rose-600 transition text-sm">
+                            </div>
+                            <input type="text" placeholder="Car Model (e.g. Creta, Thar, BMW)" class="bg-white/5 border border-white/10 rounded-lg p-3 outline-none focus:border-rose-600 transition text-sm">
+                            <select class="bg-neutral-800 border border-white/10 rounded-lg p-3 outline-none focus:border-rose-600 transition text-gray-400 text-sm">
+                                <option>Choose Service</option>
+                                <option>PPF (Paint Protection Film)</option>
+                                <option>Ceramic/Graphene Coating</option>
+                                <option>Full Body Wrap</option>
+                                <option>Interior Detailing</option>
                             </select>
-                            <button type="button" class="md:col-span-2 btn-premium py-4 rounded-xl text-lg">Send Inquiry</button>
+                            <button type="button" class="btn-premium py-4 rounded-xl text-sm font-bold mt-2">Request Quote</button>
                         </form>
                     </div>
                 </div>
@@ -254,9 +279,17 @@
         </section>
 
         <!-- Footer -->
-        <footer class="pt-24 pb-12 px-6 bg-black">
+        <footer class="py-12 px-6 bg-black">
             <div class="max-w-7xl mx-auto text-center border-t border-white/10 pt-12">
-                <p class="text-xs text-gray-500 uppercase tracking-widest">&copy; 2024 The Car Concept. AK Azad road, Rehabari, Guwahati.</p>
+                <div class="flex justify-center gap-6 mb-8 text-xl text-gray-400">
+                    <a href="#" class="hover:text-rose-600"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-rose-600"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="hover:text-rose-600"><i class="fab fa-whatsapp"></i></a>
+                </div>
+                <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest leading-loose">
+                    &copy; 2024 The Car Concept. AK Azad road, Rehabari, Guwahati. 
+                    <br> Premium Car Studio • Since 2011
+                </p>
             </div>
         </footer>
     </main>
@@ -272,10 +305,8 @@
 
             if (playPromise !== undefined) {
                 playPromise.then(_ => {
-                    // Video started playing successfully
                     video.onended = () => hideLoader();
                 }).catch(error => {
-                    // Auto-play prevented or video not found, skip loader
                     console.log("Intro video error:", error);
                     hideLoader();
                 });
@@ -293,18 +324,16 @@
             loader.style.visibility = 'hidden';
             document.body.classList.remove('loading');
             
-            // Trigger animation for home content
             setTimeout(() => {
                 revealOnScroll();
             }, 100);
         }
 
-        // Intersection Observer for scroll animations
         function revealOnScroll() {
             const elements = document.querySelectorAll('.fade-in');
             elements.forEach(el => {
                 const rect = el.getBoundingClientRect();
-                const isVisible = rect.top < window.innerHeight * 0.9;
+                const isVisible = rect.top < window.innerHeight * 0.95;
                 if (isVisible) {
                     el.classList.add('visible');
                 }
