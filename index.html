@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Car Concept | Premium Car Detailing & Customisation Guwahati</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+        :root {
+            --accent: #e11d48; /* Premium Red */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Loading Overlay */
+        #loader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), visibility 1s;
+        }
+
+        #loader video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Background Styling */
+        .bg-custom {
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('https://i.ibb.co/TqTqKhXc/dssdsd.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .btn-premium {
+            background: var(--accent);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .btn-premium:hover {
+            background: #be123c;
+            box-shadow: 0 0 20px rgba(225, 29, 72, 0.4);
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Hide Scrollbar during load */
+        body.loading {
+            overflow: hidden;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="loading">
+
+    <!-- Loading Screen -->
+    <div id="loader">
+        <video id="introVideo" muted playsinline preload="auto">
+            <source src="intro.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-rose-600 rounded flex items-center justify-center">
+                    <i class="fas fa-car-side text-white text-xl"></i>
+                </div>
+                <span class="text-xl font-extrabold tracking-tighter uppercase">The Car Concept</span>
+            </div>
+            <div class="hidden md:flex gap-8 text-sm font-semibold uppercase tracking-wider">
+                <a href="#home" class="hover:text-rose-500 transition">Home</a>
+                <a href="#about" class="hover:text-rose-500 transition">About</a>
+                <a href="#services" class="hover:text-rose-500 transition">Services</a>
+                <a href="#works" class="hover:text-rose-500 transition">Our Works</a>
+                <a href="#contact" class="hover:text-rose-500 transition">Contact</a>
+            </div>
+            <a href="#booking" class="btn-premium px-6 py-2 rounded text-xs">Book Appointment</a>
+        </div>
+    </nav>
+
+    <main class="bg-custom">
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center pt-20 px-6">
+            <div class="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 fade-in">
+                    <span class="inline-block px-4 py-1 bg-rose-600/20 border border-rose-600/50 text-rose-500 rounded-full text-xs font-bold uppercase tracking-widest">Since 2011</span>
+                    <h1 class="text-5xl md:text-7xl font-black leading-tight">
+                        RENEW. REVIVE.<br><span class="text-rose-600">REJUVENATE.</span>
+                    </h1>
+                    <p class="text-lg text-gray-400 max-w-lg">
+                        Best Car Customisation & Detailing in Guwahati. We specialize in high-quality accessories and professional detailing that makes your vehicle stand out.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <a href="#services" class="btn-premium px-8 py-4 rounded flex items-center gap-3">
+                            Visit Our Studio <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <div class="flex items-center gap-4 text-sm text-gray-300">
+                            <div class="flex -space-x-2">
+                                <img src="https://i.pravatar.cc/40?u=1" class="w-8 h-8 rounded-full border-2 border-black" alt="user">
+                                <img src="https://i.pravatar.cc/40?u=2" class="w-8 h-8 rounded-full border-2 border-black" alt="user">
+                                <img src="https://i.pravatar.cc/40?u=3" class="w-8 h-8 rounded-full border-2 border-black" alt="user">
+                            </div>
+                            <span>4.9/5 Rating from 2.5k+ Clients</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:block relative fade-in">
+                    <div class="absolute -inset-4 bg-rose-600/20 blur-3xl rounded-full"></div>
+                    <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=2070&auto=format&fit=crop" 
+                         class="relative z-10 rounded-2xl border border-white/10 shadow-2xl" 
+                         alt="Luxury Car Detailing">
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="py-24 px-6 bg-black/40">
+            <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-2xl fade-in">
+                    <div class="w-12 h-12 bg-rose-600/20 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-halved text-rose-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Precision Customisation</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Every installation, wrap, and detailing job is handled by trained professionals using tested products and proper tools.
+                    </p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl fade-in">
+                    <div class="w-12 h-12 bg-rose-600/20 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-certificate text-rose-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Genuine Fitment</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        We use original materials, branded films, and factory-grade techniques to ensure durability and perfect finish.
+                    </p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl fade-in">
+                    <div class="w-12 h-12 bg-rose-600/20 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-map-marker-alt text-rose-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Trusted Local Experts</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        We understand Guwahati roads and climate. Our solutions are practical, tested, and built to last.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24 px-6 bg-black">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16 space-y-4 fade-in">
+                    <h2 class="text-rose-600 font-bold uppercase tracking-widest text-sm">Our Story</h2>
+                    <h3 class="text-4xl md:text-5xl font-black">THE CAR CONCEPT – GUWAHATI</h3>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div class="grid grid-cols-2 gap-4 fade-in">
+                        <img src="https://images.unsplash.com/photo-1542282088-fe8426682b8f?q=80&w=2070&auto=format&fit=crop" class="rounded-lg h-64 w-full object-cover" alt="Detaling">
+                        <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=2070&auto=format&fit=crop" class="rounded-lg h-64 w-full object-cover mt-8" alt="Interiors">
+                    </div>
+                    <div class="space-y-8 fade-in">
+                        <div>
+                            <h4 class="text-xl font-bold text-rose-500 mb-3 flex items-center gap-2">
+                                <i class="fas fa-star"></i> Premium Auto Care
+                            </h4>
+                            <p class="text-gray-400 leading-relaxed">
+                                From detailed interior upgrades to advanced exterior protection, we use premium materials and proven techniques to deliver long-lasting results.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-rose-500 mb-3 flex items-center gap-2">
+                                <i class="fas fa-tools"></i> Trusted Solutions
+                            </h4>
+                            <p class="text-gray-400 leading-relaxed">
+                                Our services cover everything from seat covers, music systems, and lighting to body wrapping and PPF. One place. Complete car solutions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Form -->
+        <section id="booking" class="py-24 px-6 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto relative z-10 fade-in">
+                <div class="bg-neutral-900 border border-white/10 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
+                    <div class="md:w-2/5 p-12 bg-rose-600 flex flex-col justify-center text-white">
+                        <h2 class="text-4xl font-black mb-6">Book Now!</h2>
+                        <p class="opacity-90 mb-8">Professional car detailing and protection services in Guwahati.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4"><i class="fas fa-phone-alt"></i><span>70021 73959</span></div>
+                            <div class="flex items-center gap-4"><i class="fas fa-envelope"></i><span>thecarconcept.ghy@gmail.com</span></div>
+                        </div>
+                    </div>
+                    <div class="md:w-3/5 p-12">
+                        <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <input type="text" placeholder="Full Name" class="bg-white/5 border border-white/10 rounded-lg p-3 outline-none focus:border-rose-600 transition">
+                            <input type="tel" placeholder="Phone Number" class="bg-white/5 border border-white/10 rounded-lg p-3 outline-none focus:border-rose-600 transition">
+                            <input type="text" placeholder="Car Detail" class="bg-white/5 border border-white/10 rounded-lg p-3 outline-none focus:border-rose-600 transition">
+                            <select class="bg-neutral-800 border border-white/10 rounded-lg p-3 outline-none focus:border-rose-600 transition text-gray-400">
+                                <option>Service Preferred</option>
+                                <option>Ceramic Coating</option>
+                                <option>PPF</option>
+                                <option>Detailing</option>
+                            </select>
+                            <button type="button" class="md:col-span-2 btn-premium py-4 rounded-xl text-lg">Send Inquiry</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="pt-24 pb-12 px-6 bg-black">
+            <div class="max-w-7xl mx-auto text-center border-t border-white/10 pt-12">
+                <p class="text-xs text-gray-500 uppercase tracking-widest">&copy; 2024 The Car Concept. AK Azad road, Rehabari, Guwahati.</p>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        // Enhanced Video Loader logic
+        window.addEventListener('load', () => {
+            const video = document.getElementById('introVideo');
+            const loader = document.getElementById('loader');
+
+            // Force load/play for intro.mp4
+            const playPromise = video.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    // Video started playing successfully
+                    video.onended = () => hideLoader();
+                }).catch(error => {
+                    // Auto-play prevented or video not found, skip loader
+                    console.log("Intro video error:", error);
+                    hideLoader();
+                });
+            }
+
+            // Global safety timeout (4 seconds)
+            setTimeout(hideLoader, 4000);
+        });
+
+        function hideLoader() {
+            const loader = document.getElementById('loader');
+            if (loader.style.visibility === 'hidden') return;
+            
+            loader.style.opacity = '0';
+            loader.style.visibility = 'hidden';
+            document.body.classList.remove('loading');
+            
+            // Trigger animation for home content
+            setTimeout(() => {
+                revealOnScroll();
+            }, 100);
+        }
+
+        // Intersection Observer for scroll animations
+        function revealOnScroll() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight * 0.9;
+                if (isVisible) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+    </script>
+</body>
+</html>
